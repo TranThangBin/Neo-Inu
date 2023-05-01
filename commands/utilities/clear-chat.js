@@ -17,17 +17,16 @@ module.exports = {
         ),
     async execute(interaction) {
         const count = interaction.options.getInteger("count");
+        let messages;
         if (count === 0) {
-            const messages = await interaction.channel.messages.fetch();
+            messages = await interaction.channel.messages.fetch();
             await interaction.channel.bulkDelete(messages);
         } else {
-            const messages = await interaction.channel.messages.fetch({
+            messages = await interaction.channel.messages.fetch({
                 limit: count,
             });
             await interaction.channel.bulkDelete(messages);
         }
-        await interaction.reply(
-            `Deleted ${count === 0 ? "all" : count} messages!`
-        );
+        await interaction.reply(`Deleted ${messages.size} messages!`);
     },
 };

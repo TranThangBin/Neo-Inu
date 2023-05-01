@@ -14,12 +14,13 @@ const options = {
 };
 
 async function translate(sourceLang, targetLang, sourceText) {
+    const languageErrorEnd = `is not valid use \`/translate-help\` for more informations!`;
     if (!language[sourceLang] && !language[targetLang])
-        return `Source language ${sourceLang} and Target language ${targetLang} is not valid!`;
+        return `Source language ${sourceLang} and Target language ${targetLang} ${languageErrorEnd}`;
     if (!language[sourceLang])
-        return `Source language ${sourceLang} is not valid!`;
+        return `Source language ${sourceLang} ${languageErrorEnd}`;
     if (!language[targetLang])
-        return `Target language ${targetLang} is not valid!`;
+        return `Target language ${targetLang} ${languageErrorEnd}`;
     options.body = `{
         from: "${sourceLang}",
         to: "${targetLang}",
