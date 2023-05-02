@@ -21,7 +21,7 @@ module.exports = {
             interaction.options.getString("reason") ?? "No reason provided.";
 
         await interaction.reply(
-            `Banbing ${target.username} for reason: ${reason}`
+            `Banning ${target.username} for reason: ${reason}`
         );
         await interaction.guild.members.ban(target);
     },

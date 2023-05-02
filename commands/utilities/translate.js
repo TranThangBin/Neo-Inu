@@ -8,27 +8,35 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("sourcelang")
-                .setDescription("The source language")
+                .setDescription("The source language.")
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("targetlang")
-                .setDescription("The target language")
+                .setDescription("The target language.")
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("sourcetext")
-                .setDescription("The text to translate")
+                .setDescription("The text to translate.")
                 .setRequired(true)
+        )
+        .addBooleanOption((option) =>
+            option
+                .setName("public")
+                .setDescription(
+                    "Do you want this respond to be public (Private by default)."
+                )
         ),
     async execute(interaction) {
         const sourceLang = interaction.options.getString("sourcelang");
         const targetLang = interaction.options.getString("targetlang");
         const sourceText = interaction.options.getString("sourcetext");
+        const public = !interaction.options.getBoolean("public");
 
         const translation = await translate(sourceLang, targetLang, sourceText);
-        await interaction.reply(translation);
+        await interaction.reply({ content: translation, ephemeral: public });
     },
 };

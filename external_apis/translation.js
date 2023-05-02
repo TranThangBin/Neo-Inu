@@ -14,20 +14,24 @@ const options = {
 };
 
 async function translate(sourceLang, targetLang, sourceText) {
-    const languageErrorEnd = `is not valid use \`/translate-help\` for more informations!`;
-    if (!language[sourceLang] && !language[targetLang])
-        return `Source language ${sourceLang} and Target language ${targetLang} ${languageErrorEnd}`;
+    const languageErrorEnd =
+        "is not valid use `/translate-help` for more informations!";
+    let invalidLangs = [];
     if (!language[sourceLang])
-        return `Source language ${sourceLang} ${languageErrorEnd}`;
+        invalidLangs.push(`Source language ${sourceLang}`);
     if (!language[targetLang])
-        return `Target language ${targetLang} ${languageErrorEnd}`;
+        invalidLangs.push(`Target language ${targetLang}`);
+    if (invalidLangs.length > 0)
+        return `${invalidLangs.join(" and ")} ${languageErrorEnd}`;
     options.body = `{
         from: "${sourceLang}",
         to: "${targetLang}",
         q: "${sourceText}",
     }`;
     const response = await fetch(url, options);
-    if (!response.ok) return `An Error Occurred: Error ${response.status}`;
+    if (response.status === 400)
+        return "Translation is not available right now!";
+    if (!response.ok) return `An Error Occurred: Error ${response.status}!`;
     const data = await response.json();
     return data[0];
 }

@@ -2,9 +2,10 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const dotenv = require("dotenv");
 dotenv.config();
 const language = JSON.parse(process.env.LANGUAGE);
-let languageOptions = "";
+let languageOptions = "`";
 for (const [key, value] of Object.entries(language))
     languageOptions += `${key}: ${value}\n`;
+languageOptions += "`";
 
 module.exports = {
     data: new SlashCommandBuilder()
