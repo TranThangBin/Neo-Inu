@@ -27,7 +27,7 @@ const dotenv = __importStar(require("dotenv"));
 const classes_js_1 = require("./extend/classes.js");
 const discord_js_1 = require("discord.js");
 dotenv.config();
-const token = process.env.TOKEN;
+const token = process.env.TOKEN ?? "";
 const client = new classes_js_1.MyClient({
     intents: [
         discord_js_1.GatewayIntentBits.Guilds,
