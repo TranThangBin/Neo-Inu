@@ -49,7 +49,7 @@ module.exports = {
         }
         const command = client.commands.get(commandName);
         if (!command) {
-            return interaction.reply(`There is no command with name \`${commandName}\`!`);
+            return interaction.reply(`There is no command with name \`/${commandName}\`!`);
         }
         const commandRoot = path_1.default.join(__dirname, "..");
         const folderName = fs_1.default

@@ -55,7 +55,7 @@ module.exports = {
         const command = client.commands.get(commandName);
         if (!command) {
             return interaction.reply(
-                `There is no command with name \`${commandName}\`!`
+                `There is no command with name \`/${commandName}\`!`
             );
         }
 
