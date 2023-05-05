@@ -1,8 +1,8 @@
 import { Client, ClientOptions, Collection } from "discord.js";
 import { Command } from "./interfaces.js";
 import { Timestamps } from "./types.js";
-import * as fs from "fs";
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 
 export class MyClient extends Client {
     commands: Collection<string, Command>;
@@ -41,7 +41,7 @@ export class MyClient extends Client {
                 const filePath = path.join(commandPath, file);
                 const command = require(filePath);
                 if ("data" in command && "execute" in command) {
-                    console.log(`Command /${command.data.name} is loaded.`);
+                    console.log(`Loading command /${command.data.name}.`);
                     this.commands.set(command.data.name, command);
                 } else
                     console.log(

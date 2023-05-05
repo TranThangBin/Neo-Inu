@@ -1,6 +1,6 @@
-import * as dotenv from "dotenv";
-import * as fs from "fs";
-import * as path from "path";
+import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 import { REST, Routes, ApplicationCommand } from "discord.js";
 import { Command } from "./extend/interfaces";
 dotenv.config();
