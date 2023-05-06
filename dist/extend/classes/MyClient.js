@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MyClient = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -18,7 +17,7 @@ class MyClient extends discord_js_1.Client {
         this.loadCommands();
     }
     loadEvent() {
-        const eventPath = path_1.default.join(__dirname, "..", "events");
+        const eventPath = path_1.default.join(__dirname, "..", "..", "events");
         const eventFiles = fs_1.default
             .readdirSync(eventPath)
             .filter((file) => file.endsWith(".js"));
@@ -32,7 +31,7 @@ class MyClient extends discord_js_1.Client {
         }
     }
     loadCommands() {
-        const commandRoot = path_1.default.join(__dirname, "..", "commands");
+        const commandRoot = path_1.default.join(__dirname, "..", "..", "commands");
         const commandFolders = fs_1.default.readdirSync(commandRoot);
         for (const folder of commandFolders) {
             const commandPath = path_1.default.join(commandRoot, folder);
@@ -52,4 +51,4 @@ class MyClient extends discord_js_1.Client {
         }
     }
 }
-exports.MyClient = MyClient;
+exports.default = MyClient;

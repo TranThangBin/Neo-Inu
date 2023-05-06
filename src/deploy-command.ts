@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 import { REST, Routes, ApplicationCommand } from "discord.js";
-import { Command } from "./extend/interfaces";
+import Command from "./extend/interfaces/Command";
 dotenv.config();
 const token = process.env.TOKEN ?? "";
 const clientId = process.env.CLIENT_ID ?? "";

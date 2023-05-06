@@ -1,10 +1,10 @@
 import { Client, ClientOptions, Collection } from "discord.js";
-import { Command } from "./interfaces.js";
-import { Timestamps } from "./types.js";
+import Command from "../interfaces/Command.js";
+import Timestamps from "../types/Timestamps.js";
 import fs from "fs";
 import path from "path";
 
-export class MyClient extends Client {
+export default class MyClient extends Client {
     commands: Collection<string, Command>;
     cooldowns: Collection<string, Timestamps>;
     constructor(options: ClientOptions) {
@@ -15,7 +15,7 @@ export class MyClient extends Client {
         this.loadCommands();
     }
     loadEvent(): void {
-        const eventPath = path.join(__dirname, "..", "events");
+        const eventPath = path.join(__dirname, "..", "..", "events");
         const eventFiles = fs
             .readdirSync(eventPath)
             .filter((file) => file.endsWith(".js"));
@@ -29,7 +29,7 @@ export class MyClient extends Client {
         }
     }
     loadCommands(): void {
-        const commandRoot = path.join(__dirname, "..", "commands");
+        const commandRoot = path.join(__dirname, "..", "..", "commands");
         const commandFolders = fs.readdirSync(commandRoot);
 
         for (const folder of commandFolders) {

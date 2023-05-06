@@ -1,7 +1,7 @@
-import { MyClient } from "../extend/classes.js";
 import { Collection, Events, Interaction, time } from "discord.js";
-import { Command } from "../extend/interfaces.js";
-import { Timestamps } from "../extend/types.js";
+import MyClient from "../extend/classes/MyClient.js";
+import Command from "../extend/interfaces/Command.js";
+import Timestamps from "../extend/types/Timestamps.js";
 
 module.exports = {
     name: Events.InteractionCreate,

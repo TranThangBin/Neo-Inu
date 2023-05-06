@@ -1,5 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
-import { MyClient } from "../../extend/classes";
+import MyClient from "../../extend/classes/MyClient";
 import fs from "fs";
 import path from "path";
 
