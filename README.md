@@ -1,1 +1,1 @@
-#Neo-Inu the Discord bot!
+#Neo-Inu the Discord doge!
