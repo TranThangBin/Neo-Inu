@@ -60,14 +60,13 @@ module.exports = {
         }
 
         const commandRoot = path.join(__dirname, "..");
-        const folderName =
-            fs
-                .readdirSync(commandRoot)
-                .find((folder) =>
-                    fs
-                        .readdirSync(path.join(commandRoot, folder))
-                        .includes(`${commandName}.js`)
-                ) ?? "";
+        const folderName = fs
+            .readdirSync(commandRoot)
+            .find((folder) =>
+                fs
+                    .readdirSync(path.join(commandRoot, folder))
+                    .includes(`${commandName}.js`)
+            ) as string;
 
         const commandPath = path.join(
             commandRoot,

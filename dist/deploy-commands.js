@@ -8,9 +8,9 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const discord_js_1 = require("discord.js");
 dotenv_1.default.config();
-const token = process.env.TOKEN ?? "";
-const clientId = process.env.CLIENT_ID ?? "";
-const guildID = process.env.GUILD_ID ?? "";
+const token = process.env.TOKEN;
+const clientId = process.env.CLIENT_ID;
+const guildID = process.env.GUILD_ID;
 const commands = [];
 const commandRoot = path_1.default.join(__dirname, "commands");
 const commandFolders = fs_1.default.readdirSync(commandRoot);
@@ -35,7 +35,7 @@ const rest = new discord_js_1.REST().setToken(token);
     try {
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
         const data = (await rest.put(discord_js_1.Routes.applicationGuildCommands(clientId, guildID), { body: commands }));
-        console.log(`Successfully reloaded ${data.length}`);
+        console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     }
     catch (error) {
         console.error(error);

@@ -7,7 +7,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const MyClient_js_1 = __importDefault(require("./extend/classes/MyClient.js"));
 const discord_js_1 = require("discord.js");
 dotenv_1.default.config();
-const token = process.env.TOKEN ?? "";
+const token = process.env.TOKEN;
 const client = new MyClient_js_1.default({
     intents: [
         discord_js_1.GatewayIntentBits.Guilds,
