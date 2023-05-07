@@ -3,6 +3,7 @@ import { Command } from "./interfaces.js";
 import { Timestamps } from "./types.js";
 import fs from "fs";
 import path from "path";
+import logWithTimestamp from "../log-with-timestamp.js";
 
 export class MyClient extends Client {
     commands: Collection<string, Command>;
@@ -41,10 +42,10 @@ export class MyClient extends Client {
                 const filePath = path.join(commandPath, file);
                 const command = require(filePath);
                 if ("data" in command && "execute" in command) {
-                    console.log(`Loading command /${command.data.name}.`);
+                    logWithTimestamp(`Loading command /${command.data.name}.`);
                     this.commands.set(command.data.name, command);
                 } else
-                    console.log(
+                    logWithTimestamp(
                         `[WARNING] The command at ${filePath} is missing a required or "execute property.`
                     );
             }

@@ -1,8 +1,9 @@
-import dotenv from "dotenv";
-import fs from "fs";
-import path from "path";
 import { REST, Routes, ApplicationCommand } from "discord.js";
 import { Command } from "./extend/interfaces";
+import fs from "fs";
+import path from "path";
+import logWithTimestamp from "./log-with-timestamp";
+import dotenv from "dotenv";
 dotenv.config();
 const token = process.env.TOKEN as string;
 const clientId = process.env.CLIENT_ID as string;
@@ -21,10 +22,10 @@ for (const folder of commandFolders) {
         const filePath = path.join(commandPath, file);
         const command: Command = require(filePath);
         if ("data" in command && "execute" in command) {
-            console.log(`Deploying /${command.data.name}.`);
+            logWithTimestamp(`Deploying /${command.data.name}.`);
             commands.push(command.data.toJSON());
         } else
-            console.log(
+            logWithTimestamp(
                 `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
             );
     }
@@ -34,14 +35,14 @@ const rest = new REST().setToken(token);
 
 (async () => {
     try {
-        console.log(
+        logWithTimestamp(
             `Started refreshing ${commands.length} application (/) commands.`
         );
         const data = (await rest.put(
             Routes.applicationGuildCommands(clientId, guildID),
             { body: commands }
         )) as ApplicationCommand[];
-        console.log(
+        logWithTimestamp(
             `Successfully reloaded ${data.length} application (/) commands.`
         );
     } catch (error) {

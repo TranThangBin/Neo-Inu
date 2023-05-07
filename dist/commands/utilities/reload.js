@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const log_with_timestamp_1 = __importDefault(require("../../log-with-timestamp"));
 module.exports = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName("reload")
@@ -29,7 +30,7 @@ module.exports = {
                     delete require.cache[require.resolve(command)];
                     try {
                         const newCommand = require(command);
-                        console.log(`Reloading command /${newCommand.data.name}.`);
+                        (0, log_with_timestamp_1.default)(`Reloading command /${newCommand.data.name}.`);
                         client.commands.set(newCommand.data.name, newCommand);
                     }
                     catch (error) {
@@ -62,7 +63,7 @@ module.exports = {
         try {
             client.commands.delete(command.data.name);
             const newCommand = require(commandPath);
-            console.log(`Reloading command /${newCommand.data.name}.`);
+            (0, log_with_timestamp_1.default)(`Reloading command /${newCommand.data.name}.`);
             client.commands.set(newCommand.data.name, newCommand);
             await interaction.reply({
                 content: `Command \`/${newCommand.data.name}\` was reloaded!`,

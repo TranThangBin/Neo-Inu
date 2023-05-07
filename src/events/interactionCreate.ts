@@ -2,6 +2,7 @@ import { Collection, Events, Interaction, time } from "discord.js";
 import { MyClient } from "../extend/classes.js";
 import { Command } from "../extend/interfaces.js";
 import { Timestamps } from "../extend/types.js";
+import logWithTimestamp from "../log-with-timestamp.js";
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -46,7 +47,9 @@ module.exports = {
 
         try {
             await command.execute(interaction);
-            console.log(`Executing /${interaction.commandName}`);
+            logWithTimestamp(
+                `Executing /${interaction.commandName} by ${interaction.user.tag}`
+            );
         } catch (error) {
             console.error(`Error execute ${interaction.commandName}`);
             console.error(error);

@@ -2,6 +2,7 @@ import { CommandInteraction, SlashCommandBuilder } from "discord.js";
 import { MyClient } from "../../extend/classes";
 import fs from "fs";
 import path from "path";
+import logWithTimestamp from "../../log-with-timestamp";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -32,7 +33,7 @@ module.exports = {
                     delete require.cache[require.resolve(command)];
                     try {
                         const newCommand = require(command);
-                        console.log(
+                        logWithTimestamp(
                             `Reloading command /${newCommand.data.name}.`
                         );
                         client.commands.set(newCommand.data.name, newCommand);
@@ -79,7 +80,7 @@ module.exports = {
         try {
             client.commands.delete(command.data.name);
             const newCommand = require(commandPath);
-            console.log(`Reloading command /${newCommand.data.name}.`);
+            logWithTimestamp(`Reloading command /${newCommand.data.name}.`);
             client.commands.set(newCommand.data.name, newCommand);
             await interaction.reply({
                 content: `Command \`/${newCommand.data.name}\` was reloaded!`,

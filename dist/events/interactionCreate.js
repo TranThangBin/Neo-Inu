@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
+const log_with_timestamp_js_1 = __importDefault(require("../log-with-timestamp.js"));
 module.exports = {
     name: discord_js_1.Events.InteractionCreate,
     async execute(interaction) {
@@ -36,7 +40,7 @@ module.exports = {
         }, cooldownAmount);
         try {
             await command.execute(interaction);
-            console.log(`Executing /${interaction.commandName}`);
+            (0, log_with_timestamp_js_1.default)(`Executing /${interaction.commandName} by ${interaction.user.tag}`);
         }
         catch (error) {
             console.error(`Error execute ${interaction.commandName}`);

@@ -7,6 +7,7 @@ exports.MyClient = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const log_with_timestamp_js_1 = __importDefault(require("../log-with-timestamp.js"));
 class MyClient extends discord_js_1.Client {
     commands;
     cooldowns;
@@ -43,11 +44,11 @@ class MyClient extends discord_js_1.Client {
                 const filePath = path_1.default.join(commandPath, file);
                 const command = require(filePath);
                 if ("data" in command && "execute" in command) {
-                    console.log(`Loading command /${command.data.name}.`);
+                    (0, log_with_timestamp_js_1.default)(`Loading command /${command.data.name}.`);
                     this.commands.set(command.data.name, command);
                 }
                 else
-                    console.log(`[WARNING] The command at ${filePath} is missing a required or "execute property.`);
+                    (0, log_with_timestamp_js_1.default)(`[WARNING] The command at ${filePath} is missing a required or "execute property.`);
             }
         }
     }
