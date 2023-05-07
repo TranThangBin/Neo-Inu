@@ -15,7 +15,7 @@ export class MyClient extends Client {
         this.loadCommands();
     }
     loadEvent(): void {
-        const eventPath = path.join(__dirname, "..", "..", "events");
+        const eventPath = path.join(__dirname, "..", "events");
         const eventFiles = fs
             .readdirSync(eventPath)
             .filter((file) => file.endsWith(".js"));
@@ -29,7 +29,7 @@ export class MyClient extends Client {
         }
     }
     loadCommands(): void {
-        const commandRoot = path.join(__dirname, "..", "..", "commands");
+        const commandRoot = path.join(__dirname, "..", "commands");
         const commandFolders = fs.readdirSync(commandRoot);
 
         for (const folder of commandFolders) {

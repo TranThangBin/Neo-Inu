@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-const dog_images_js_1 = __importDefault(require("../../external_apis/dog-images.js"));
+const dog_reply_js_1 = __importDefault(require("../../external_apis/dog-reply.js"));
 module.exports = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName("dog")
@@ -16,9 +16,7 @@ module.exports = {
         const publicStatus = !interaction.options.get("public")
             ?.value;
         await interaction.deferReply({ ephemeral: publicStatus });
-        const image = await (0, dog_images_js_1.default)();
-        await interaction.editReply({
-            files: [image],
-        });
+        const replyDog = (await (0, dog_reply_js_1.default)());
+        await interaction.editReply(replyDog);
     },
 };

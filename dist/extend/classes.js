@@ -18,7 +18,7 @@ class MyClient extends discord_js_1.Client {
         this.loadCommands();
     }
     loadEvent() {
-        const eventPath = path_1.default.join(__dirname, "..", "..", "events");
+        const eventPath = path_1.default.join(__dirname, "..", "events");
         const eventFiles = fs_1.default
             .readdirSync(eventPath)
             .filter((file) => file.endsWith(".js"));
@@ -32,7 +32,7 @@ class MyClient extends discord_js_1.Client {
         }
     }
     loadCommands() {
-        const commandRoot = path_1.default.join(__dirname, "..", "..", "commands");
+        const commandRoot = path_1.default.join(__dirname, "..", "commands");
         const commandFolders = fs_1.default.readdirSync(commandRoot);
         for (const folder of commandFolders) {
             const commandPath = path_1.default.join(commandRoot, folder);

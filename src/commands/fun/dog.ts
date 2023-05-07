@@ -1,5 +1,9 @@
-import { SlashCommandBuilder, CommandInteraction } from "discord.js";
-import getImage from "../../external_apis/dog-images.js";
+import {
+    SlashCommandBuilder,
+    CommandInteraction,
+    InteractionEditReplyOptions,
+} from "discord.js";
+import getDog from "../../external_apis/dog-reply.js";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,9 +18,7 @@ module.exports = {
         const publicStatus = !interaction.options.get("public")
             ?.value as boolean;
         await interaction.deferReply({ ephemeral: publicStatus });
-        const image = await getImage();
-        await interaction.editReply({
-            files: [image],
-        });
+        const replyDog = (await getDog()) as InteractionEditReplyOptions;
+        await interaction.editReply(replyDog);
     },
 };

@@ -9,7 +9,7 @@ const url = "https://dog.ceo/api/breeds/image/random";
 exports.default = async () => {
     const response = await fetch(url);
     if (!response.ok)
-        return new discord_js_1.AttachmentBuilder(error_image_path_js_1.default);
+        return { files: [new discord_js_1.AttachmentBuilder(error_image_path_js_1.default)] };
     const data = await response.json();
-    return new discord_js_1.AttachmentBuilder(data.message);
+    return { files: [new discord_js_1.AttachmentBuilder(data.message)] };
 };

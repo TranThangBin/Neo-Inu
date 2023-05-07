@@ -5,7 +5,7 @@ const url = "https://dog.ceo/api/breeds/image/random";
 
 export default async () => {
     const response = await fetch(url);
-    if (!response.ok) return new AttachmentBuilder(errorImagePath);
+    if (!response.ok) return { files: [new AttachmentBuilder(errorImagePath)] };
     const data = await response.json();
-    return new AttachmentBuilder(data.message);
+    return { files: [new AttachmentBuilder(data.message)] };
 };
