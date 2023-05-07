@@ -7,15 +7,16 @@ module.exports = {
         .setDescription("Clear the chat.")
         .addIntegerOption((option) => option
         .setName("count")
-        .setDescription("Clear from 1 to 100 messages from the last message (blank if clear all).")
+        .setDescription("Clear from 1 to 100 messages from the last message.")
         .setMinValue(1)
-        .setMaxValue(100)),
+        .setMaxValue(100)
+        .setRequired(true)),
     async execute(interaction) {
         await interaction.deferReply({ ephemeral: true });
         const count = interaction.options.get("count")?.value;
         const channel = interaction.channel;
         const messages = await interaction.channel?.messages.fetch({
-            limit: count || undefined,
+            limit: count,
         });
         if (!messages)
             return;
