@@ -1,17 +1,15 @@
 import { Collection, Events, Interaction, time } from "discord.js";
-import MyClient from "../extend/classes/MyClient.js";
-import Command from "../extend/interfaces/Command.js";
-import Timestamps from "../extend/types/Timestamps.js";
+import { MyClient } from "../extend/classes.js";
+import { Command } from "../extend/interfaces.js";
+import { Timestamps } from "../extend/types.js";
 
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction: Interaction) {
         if (!interaction.isChatInputCommand()) return;
 
-        const client: MyClient = interaction.client as MyClient;
-        const command: Command | undefined = client.commands.get(
-            interaction.commandName
-        );
+        const client = interaction.client as MyClient;
+        const command = client.commands.get(interaction.commandName) as Command;
 
         if (!command) {
             console.error(`No command matching ${interaction.commandName}`);

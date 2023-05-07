@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MyClient = void 0;
 const discord_js_1 = require("discord.js");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -51,4 +52,4 @@ class MyClient extends discord_js_1.Client {
         }
     }
 }
-exports.default = MyClient;
+exports.MyClient = MyClient;

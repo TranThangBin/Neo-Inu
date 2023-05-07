@@ -1,4 +1,4 @@
-import MyClient from "../extend/classes/MyClient.js";
+import { MyClient } from "../extend/classes.js";
 import { Events } from "discord.js";
 
 module.exports = {

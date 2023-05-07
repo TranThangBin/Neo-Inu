@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
-const MyClient_js_1 = __importDefault(require("./extend/classes/MyClient.js"));
+const classes_js_1 = require("./extend/classes.js");
 const discord_js_1 = require("discord.js");
 dotenv_1.default.config();
 const token = process.env.TOKEN;
-const client = new MyClient_js_1.default({
+const client = new classes_js_1.MyClient({
     intents: [
         discord_js_1.GatewayIntentBits.Guilds,
         discord_js_1.GatewayIntentBits.GuildMessages,

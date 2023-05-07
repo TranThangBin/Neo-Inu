@@ -1,10 +1,10 @@
 import { Client, ClientOptions, Collection } from "discord.js";
-import Command from "../interfaces/Command.js";
-import Timestamps from "../types/Timestamps.js";
+import { Command } from "./interfaces.js";
+import { Timestamps } from "./types.js";
 import fs from "fs";
 import path from "path";
 
-export default class MyClient extends Client {
+export class MyClient extends Client {
     commands: Collection<string, Command>;
     cooldowns: Collection<string, Timestamps>;
     constructor(options: ClientOptions) {
