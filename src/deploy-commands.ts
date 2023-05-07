@@ -48,8 +48,3 @@ const rest = new REST().setToken(token);
         console.error(error);
     }
 })();
-
-let commandsString = "`";
-for (const command of commands) commandsString += `${command.name}\n`;
-commandsString += "`";
-export default commandsString;

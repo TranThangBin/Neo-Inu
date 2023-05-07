@@ -4,4 +4,4 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
-exports.default = path_1.default.join(__dirname, "..", "..", "images", "error-image-photo-icon.png");
+const errorImage = path_1.default.join(__dirname, "..", "..", "images", "error-image-photo-icon.png");
