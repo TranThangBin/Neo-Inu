@@ -39,7 +39,7 @@ export default async (cardName: string) => {
 
     replyContent.push(
         `Archetype   : ${firstFound.archetype ?? "No archetype available yet"}`,
-        `Description : ${firstFound.desc}`,
+        `Description :\n${firstFound.desc}`,
         "```"
     );
 

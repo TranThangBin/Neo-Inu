@@ -12,7 +12,7 @@ module.exports = {
         .addBooleanOption((option) =>
             option
                 .setName("public")
-                .setDescription("Do you want this image to be public?")
+                .setDescription("Do you want this message to be public?")
                 .setRequired(true)
         ),
     async execute(interaction: CommandInteraction) {

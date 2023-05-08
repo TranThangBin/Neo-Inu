@@ -51,7 +51,7 @@ module.exports = {
                 `Executing /${interaction.commandName} by ${interaction.user.tag}`
             );
         } catch (error) {
-            console.error(`Error execute ${interaction.commandName}`);
+            logWithTimestamp(`Error execute ${interaction.commandName}`);
             console.error(error);
         }
     },
