@@ -13,7 +13,7 @@ module.exports = {
             option
                 .setName("count")
                 .setDescription(
-                    "Clear from 1 to 100 messages from the last message."
+                    "Clear from 1 to 100 messages from the last message that is under 14 days old."
                 )
                 .setMinValue(1)
                 .setMaxValue(100)

@@ -13,13 +13,12 @@ module.exports = {
             option
                 .setName("username")
                 .setDescription(
-                    "Provide information about a user in the server (blank if yourself)."
+                    "Provide information about a user in the server."
                 )
+                .setRequired(true)
         ),
     async execute(interaction: CommandInteraction) {
-        const target =
-            (interaction.options.getMember("username") as GuildMember) ??
-            (interaction.member as GuildMember);
+        const target = interaction.options.getMember("username") as GuildMember;
 
         const targetAvatar = target.user.avatarURL() as string;
 

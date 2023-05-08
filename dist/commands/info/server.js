@@ -9,6 +9,9 @@ module.exports = {
         await interaction.reply({
             content: `This server is \`${interaction.guild?.name}\` and has \`${interaction.guild?.memberCount}\` members.`,
             ephemeral: true,
+            files: [
+                new discord_js_1.AttachmentBuilder(interaction.guild?.iconURL()),
+            ],
         });
     },
 };

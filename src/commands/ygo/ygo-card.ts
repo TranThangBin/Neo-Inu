@@ -19,6 +19,7 @@ module.exports = {
             option
                 .setName("public")
                 .setDescription("Do you want this image to be public?")
+                .setRequired(true)
         ),
     async execute(interaction: CommandInteraction) {
         const publicStatus = !interaction.options.get("public")

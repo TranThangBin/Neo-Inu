@@ -7,10 +7,10 @@ module.exports = {
         .setDescription("Provide information about a user.")
         .addUserOption((option) => option
         .setName("username")
-        .setDescription("Provide information about a user in the server (blank if yourself).")),
+        .setDescription("Provide information about a user in the server.")
+        .setRequired(true)),
     async execute(interaction) {
-        const target = interaction.options.getMember("username") ??
-            interaction.member;
+        const target = interaction.options.getMember("username");
         const targetAvatar = target.user.avatarURL();
         if (!targetAvatar) {
             await interaction.reply({

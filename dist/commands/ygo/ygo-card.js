@@ -15,7 +15,8 @@ module.exports = {
         .setRequired(true))
         .addBooleanOption((option) => option
         .setName("public")
-        .setDescription("Do you want this image to be public?")),
+        .setDescription("Do you want this image to be public?")
+        .setRequired(true)),
     async execute(interaction) {
         const publicStatus = !interaction.options.get("public")
             ?.value;
